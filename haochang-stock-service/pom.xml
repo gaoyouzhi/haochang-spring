@@ -65,6 +65,14 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+
+                <configuration>
+                    <fork>true</fork>
+                    <!--增加jvm参数-->
+                    <jvmArguments>-Dfile.encoding=UTF-8</jvmArguments>
+                    <!--指定入口类-->
+                    <mainClass>com.haochang.webflux.stock.StockApplication</mainClass>
+                </configuration>
             </plugin>
         </plugins>
     </build>
