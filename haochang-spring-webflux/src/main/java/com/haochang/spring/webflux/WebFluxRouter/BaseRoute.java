@@ -24,7 +24,9 @@ public class BaseRoute {
         return RouterFunctions.route()
                 .POST(BasePath.save, productHandler::save)
                 .GET(BasePath.find, productHandler::findById)
-                .GET(BasePath.delete, productHandler::deleteById).build();
+                .GET(BasePath.delete, productHandler::deleteById)
+                .POST(BasePath.batchSave, productHandler::batchSave)
+                .build();
 
     }
 

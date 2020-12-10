@@ -4,7 +4,10 @@ import com.haochang.spring.webflux.model.Product;
 import com.haochang.spring.webflux.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+
+import java.util.List;
 
 
 /**
@@ -29,6 +32,10 @@ public class ProductService {
 
     public Mono<Void> deleteById(Long id){
         return productRepository.deleteById(id);
+    }
+
+    public Flux<Product> batchSave(List<Product> products){
+        return productRepository.saveAll(products);
     }
 
 }
