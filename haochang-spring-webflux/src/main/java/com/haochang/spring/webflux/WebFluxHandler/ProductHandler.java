@@ -4,10 +4,10 @@ import com.haochang.spring.webflux.model.Product;
 import com.haochang.spring.webflux.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.reactive.TransactionalOperator;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 /**
@@ -86,5 +86,21 @@ public class ProductHandler {
                 .flatMap(p -> productService.save(p))
                 .then(ServerResponse.ok().build())
                 .as(transactionalOperator::transactional);
+    }
+
+    /**
+     * 方法功能描述：
+     * @MethodName: findById
+     * @param serverRequest
+     * @Return: {@link Mono<ServerResponse>}
+     * @Author: yz.gao
+     * @Date: 2020-12-10 16:36
+     */
+    public Mono<ServerResponse> findByNameAndCategory(ServerRequest serverRequest){
+        String name =serverRequest.pathVariable("name");
+        String category =serverRequest.pathVariable("category");
+        return ServerResponse.ok().
+                body(productService.findByNameAndCategory(name, category), Product.class)
+                .switchIfEmpty(ServerResponse.notFound().build());
     }
 }

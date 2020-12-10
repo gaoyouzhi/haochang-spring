@@ -14,6 +14,6 @@ import reactor.core.publisher.Flux;
 @Repository
 public interface ProductRepository extends ReactiveCrudRepository<Product, Long> {
 
-    @Query("select * from t_product p where p.name = : name and p.category =: category")
-    Flux<Product> findByCategoryAndAndName(String name, Integer category);
+    @Query("select * from t_product p where p.name =:name and p.category =:category")
+    Flux<Product> findByNameAndCategory(String name, String category);
 }

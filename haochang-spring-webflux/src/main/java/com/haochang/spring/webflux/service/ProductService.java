@@ -38,4 +38,8 @@ public class ProductService {
         return productRepository.saveAll(products);
     }
 
+    public Flux<Product> findByNameAndCategory(String name, String category){
+        return productRepository.findByNameAndCategory(name, category);
+    }
+
 }
