@@ -4,7 +4,7 @@ import com.haochang.webflux.stock.config.BasePath;
 import com.haochang.webflux.stock.handler.StockHandler;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.RouterFunctions;
 import org.springframework.web.reactive.function.server.ServerResponse;
@@ -15,8 +15,8 @@ import org.springframework.web.reactive.function.server.ServerResponse;
  * @author: youzhi.gao
  * @date: 2020-12-10 17:14
  */
-@Configuration
-public class StockRouting {
+@Component
+public class StockRoute {
 
     @Bean
     @LoadBalanced

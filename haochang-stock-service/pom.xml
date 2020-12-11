@@ -4,16 +4,16 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.haochang</groupId>
-        <artifactId>haochang-spring</artifactId>
-        <version>1.0.0</version>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.3.0.RELEASE</version>
     </parent>
 
     <groupId>com.haochang</groupId>
-    <artifactId>haochang-stock</artifactId>
+    <artifactId>haochang-stock-service</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>haochang-stock</name>
-    <description>haochang-stock for Spring Boot</description>
+    <name>haochang-stock-service</name>
+    <description>haochang-stock-service for Spring Boot</description>
 
     <properties>
         <java.version>11</java.version>
@@ -40,12 +40,6 @@
             <scope>runtime</scope>
         </dependency>
 
-        <!--&lt;!&ndash;引入权限管理&ndash;&gt;-->
-        <!--<dependency>-->
-        <!--<groupId>org.springframework.boot</groupId>-->
-        <!--<artifactId>spring-boot-starter-security</artifactId>-->
-        <!--</dependency>-->
-
         <!--引入负载均衡 没有用ribbon-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -60,19 +54,32 @@
 
     </dependencies>
 
+    <dependencyManagement>
+        <dependencies>
+            <!--整合spring cloud-->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>Hoxton.SR4</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!--整合spring cloud alibaba-->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>2.2.1.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <build>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-
-                <configuration>
-                    <fork>true</fork>
-                    <!--增加jvm参数-->
-                    <jvmArguments>-Dfile.encoding=UTF-8</jvmArguments>
-                    <!--指定入口类-->
-                    <mainClass>com.haochang.webflux.stock.StockApplication</mainClass>
-                </configuration>
             </plugin>
         </plugins>
     </build>

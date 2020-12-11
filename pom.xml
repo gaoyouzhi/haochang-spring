@@ -14,79 +14,14 @@
     <artifactId>haochang-spring</artifactId>
     <version>1.0.0</version>
     <name>haochang-spring</name>
+    <packaging>pom</packaging>
 
 
     <modules>
-        <module>haochang-common</module>
-        <module>haochang-security</module>
-        <module>haochang-spring-webflux</module>
-        <module>haochang-stock-service</module>
-        <module>haochang-spring-boot</module>
+       <module>haochang-spring-boot</module>
+       <module>haochang-spring-webflux</module>
+       <module>haochang-stock-service</module>
+       <module>haochang-security</module>
     </modules>
 
-    <properties>
-        <java.version>11</java.version>
-    </properties>
-
-    <dependencies>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-webflux</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>dev.miku</groupId>
-            <artifactId>r2dbc-mysql</artifactId>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-r2dbc</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <scope>runtime</scope>
-        </dependency>
-
-        <!--&lt;!&ndash;引入权限管理&ndash;&gt;-->
-        <!--<dependency>-->
-        <!--<groupId>org.springframework.boot</groupId>-->
-        <!--<artifactId>spring-boot-starter-security</artifactId>-->
-        <!--</dependency>-->
-
-        <!--引入负载均衡 没有用ribbon-->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-loadbalancer</artifactId>
-        </dependency>
-
-        <!--映入nacos注册中心-->
-        <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
-        </dependency>
-
-    </dependencies>
-
-    <dependencyManagement>
-        <dependencies>
-            <!--整合spring cloud-->
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Hoxton.SR4</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <!--整合spring cloud alibaba-->
-            <dependency>
-                <groupId>com.alibaba.cloud</groupId>
-                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
-                <version>2.2.1.RELEASE</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
 </project>
