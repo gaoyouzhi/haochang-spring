@@ -14,7 +14,9 @@ public class BasePath {
     public static final String update = productRoot + "/update/id{id}";
     public static final String find = productRoot + "/find/id/{id}";
     public static final String batchSave = productRoot + "/batchSave";
+    public static final String findStock = productRoot + "/findStock/id/{id}";
     public static final String findByNameAndCategory = productRoot + "/findByNameAndCategory/name/{name}/category/{category}";
 
 
+    public static final String productStockUrl = "/reactive/stock/find/productId";
 }

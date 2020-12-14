@@ -27,6 +27,7 @@ public class BaseRoute {
                 .GET(BasePath.delete, productHandler::deleteById)
                 .POST(BasePath.batchSave, productHandler::batchSave)
                 .GET(BasePath.findByNameAndCategory, productHandler::findByNameAndCategory)
+                .GET(BasePath.findStock, productHandler::findStock)
                 .build();
 
     }

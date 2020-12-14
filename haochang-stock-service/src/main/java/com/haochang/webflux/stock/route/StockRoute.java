@@ -23,7 +23,10 @@ public class StockRoute {
     public RouterFunction<ServerResponse> stockRouting(StockHandler stockHandler){
         return RouterFunctions.route()
                 .POST(BasePath.save, stockHandler::save)
-                .GET(BasePath.find, stockHandler::getStockById).build();
+                .GET(BasePath.find, stockHandler::getStockById)
+                .POST(BasePath.batchSave, stockHandler::batchSave)
+                .GET(BasePath.findByProductId, stockHandler::findByProductId)
+                .build();
     }
 
 }

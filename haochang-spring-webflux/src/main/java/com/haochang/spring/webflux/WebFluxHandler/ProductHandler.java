@@ -1,13 +1,15 @@
 package com.haochang.spring.webflux.WebFluxHandler;
 
+import com.haochang.spring.webflux.config.BasePath;
 import com.haochang.spring.webflux.model.Product;
 import com.haochang.spring.webflux.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.reactive.TransactionalOperator;
+import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
-import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 /**
@@ -23,6 +25,10 @@ public class ProductHandler {
 
     @Autowired
     private TransactionalOperator transactionalOperator;
+
+    @Autowired
+    @Qualifier(value = "webFluxClient")
+    private WebClient.Builder webFluxClient;
 
     /**
      * 方法功能描述：新增商品
@@ -102,5 +108,19 @@ public class ProductHandler {
         return ServerResponse.ok().
                 body(productService.findByNameAndCategory(name, category), Product.class)
                 .switchIfEmpty(ServerResponse.notFound().build());
+    }
+
+    /**
+     * 方法功能描述：查询库存
+     * @MethodName: findStock
+     * @param serverRequest
+     * @Return: {@link Mono<ServerResponse>}
+     * @Author: yz.gao
+     * @Date: 2020-12-14 9:30
+     */
+    public Mono<ServerResponse> findStock(ServerRequest serverRequest){
+        Long productId = Long.parseLong(serverRequest.pathVariable("id"));
+        return webFluxClient.build().get().uri(BasePath.productStockUrl + "/" +productId)
+                .retrieve().bodyToMono(String.class).flatMap(p->ServerResponse.ok().bodyValue(p));
     }
 }
