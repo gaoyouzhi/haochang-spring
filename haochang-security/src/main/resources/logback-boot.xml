@@ -3,7 +3,7 @@
 
     <include resource="org/springframework/boot/logging/logback/base.xml"/>
     <property name="LOG_PATH" value="${log_home:-./logs}"/>
-    <property name="LOG_NAME" value="ikang-cps-gateway"/>
+    <property name="LOG_NAME" value="haochang-cps-gateway"/>
 
     <appender name="FILE_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${LOG_PATH}/${LOG_NAME}.log</file>
