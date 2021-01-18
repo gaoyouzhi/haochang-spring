@@ -14,7 +14,7 @@ import java.io.IOException;
  */
 public class MyExpiredSessionStrategy implements SessionInformationExpiredStrategy {
     @Override
-    public void onExpiredSessionDetected(SessionInformationExpiredEvent sessionInformationExpiredEvent) throws IOException, ServletException {
+    public void onExpiredSessionDetected(SessionInformationExpiredEvent sessionInformationExpiredEvent) throws IOException {
         HttpServletResponse response = sessionInformationExpiredEvent.getResponse();
         response.setContentType("UTF-8");
         response.getWriter().write("您已被挤兑下线");
