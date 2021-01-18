@@ -23,7 +23,7 @@ public class NettyClientHandler extends ChannelInboundHandlerAdapter {
      * @Date: 2021-01-18 13:55
      */
     @Override
-    public void channelInactive(ChannelHandlerContext ctx) throws Exception {
+    public void channelActive(ChannelHandlerContext ctx) throws Exception {
         ByteBuf buf = Unpooled.copiedBuffer("HelloServer", CharsetUtil.UTF_8);
         ctx.writeAndFlush(buf);
     }
