@@ -1,7 +1,9 @@
 package com.haochang.search.controller;
 
+import com.haochang.search.model.EsProduct;
 import com.haochang.search.service.EsProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,5 +23,10 @@ public class EsController {
     public String importAll(){
         esProductService.importAll();
         return "success";
+    }
+
+    @RequestMapping("/search/simple/{id}")
+    public EsProduct findById(@PathVariable Long id){
+        return esProductService.findById(id);
     }
 }

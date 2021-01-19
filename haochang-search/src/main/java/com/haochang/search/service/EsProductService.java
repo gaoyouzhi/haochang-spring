@@ -14,4 +14,6 @@ public interface EsProductService {
     int importAll();
 
     EsProduct create(Long id);
+
+    EsProduct findById(Long id);
 }
