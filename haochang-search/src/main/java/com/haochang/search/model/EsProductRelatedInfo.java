@@ -4,7 +4,7 @@ import java.util.List;
 
 /**
  * @Description 描述：
- * @Author: youzhi.gao@ikang.com
+ * @Author: youzhi.gao
  * @Date: 2021-01-15 11:01
  */
 public class EsProductRelatedInfo {
