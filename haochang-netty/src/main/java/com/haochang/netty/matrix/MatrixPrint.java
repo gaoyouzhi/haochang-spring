@@ -42,10 +42,10 @@ public class MatrixPrint {
         boolean[][] visited = new boolean[rows][columns];
         for (int i = 0; i < total; i++){
             result.add(ints[row][column]);
+            visited[row][column] = true;
 
             int nextRow = row + directions[directionIndex][0];
             int nextColumn = column + directions[directionIndex][1];
-            visited[row][column] = true;
 
             //到达临界 或者已遍历过 换方向
             if(nextRow >= rows || nextColumn >= columns || nextRow < 0 || nextColumn < 0 || visited[nextRow][nextColumn]){
