@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: mis-open-api-gateway  # 根据应用模块不同，配置的名称也不相同.这个配置的名称要和nacos中配置的Data Id名称符号.前部分一致即可
+  profiles:
+    active: test
+  cloud:
+    nacos:
+      config:
+        server-addr: nacos.ikang.com  # nacos server地址
+        group: DEFAULT_GROUP
+        namespace: 85ed8ef2-24e8-4858-89d7-a22fa75c1e8c
+        refresh: true
+        file-extension: yaml
+      discovery:
+        server-addr: nacos.ikang.com
+        group: DEFAULT_GROUP
+        namespace: 85ed8ef2-24e8-4858-89d7-a22fa75c1e8c
+        locator:
+          enabled: true #开启从注册中心动态创建路由的功能
+          lower-case-service-id: true #使用小写服务名，默认是大写
+server:
+  port: 9090
